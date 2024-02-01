@@ -1,65 +1,118 @@
+
 function getComputerChoice() {
-    const options = ["rock", "paper", "scissors"];
+    const options = ["✊", "✋", "✌️"];
     return options[Math.floor(Math.random() * options.length)];
 }
 
-function game() {
-    while(numberOfRounds < 5) {
-        let playerSelection = prompt("Enter your move!");
-        let ComputerSelection = getComputerChoice();
-        console.log("Round Number: " + (numberOfRounds+1) + " Your Choice: " + playerSelection + " Computer Choice: " + ComputerSelection);
+// while (numberOfRounds < 5) {
+//     let playerSelection = prompt("Enter your move!");
+//     let ComputerSelection = getComputerChoice();
+//     console.log("Round Number: " + (numberOfRounds + 1) + " Your Choice: " + playerSelection + " Computer Choice: " + ComputerSelection);
 
-        playRound(playerSelection.toLowerCase(), ComputerSelection);
-    }
-    function playRound(playerSelection, ComputerSelection) {
-        if (playerSelection === ComputerSelection) {
-            console.log("It's a tie!!! Play Again!");
-            game();
-        }
-        else if (playerSelection == "rock") {
-            if (ComputerSelection == "scissors"){
-                console.log("You Win!!! :D Rock defeats Scissors!");
-                playerwins++;
-            }
-            else{
-                console.log("You Lose :\"( Rock loses to Paper");
-                computerwins++;
-            }
-        }
-        else if (playerSelection == "paper") {
-            if (ComputerSelection == "rock"){
-                console.log("You Win!!! :D Paper defeats Rock!");
-                playerwins++;
-            }
-            else{
-                console.log("You Lose :\"( Paper loses to Scissors");
-                computerwins++;
-            }
-        }
-        else if (playerSelection == "scissors") {
-            if (ComputerSelection == "paper"){
-                console.log("You Win!!! :D Scissors defeat Paper!");
-                playerwins++;
-            }
-            else{
-                console.log("You Lose :\"( Scissors lose to Rock");
-                computerwins++;
-            }
-        }
-        numberOfRounds++;
+//     playRound(playerSelection.toLowerCase(), ComputerSelection);
+// }
 
+function restart() {
+    rebtn.addEventListener('click', () => {
+        playerwins = 0;
+        computerwins = 0;
+    })
+}
+function playRound(playerSelection, ComputerSelection) {
+    //console.log("HELLO");
+    if (playerSelection === ComputerSelection) {
+        standing.textContent = "TIE!";
+        //div.textContent = "It's a tie!!! Play Again!";
+        //console.log("It's a tie!!! Play Again!");
     }
+    else if (playerSelection == "✊") {
+        if (ComputerSelection == "✌️") {
+            standing.textContent = "WIN!";
+            playerwins++;
+            //console.log("You Win!!! :D ✊ defeats ✌️!");
+        }
+        else {
+            standing.textContent = "LOSE!";
+            computerwins++;
+            //console.log("You Lose :\"( ✊ loses to ✋");
+        }
+    }
+    else if (playerSelection == "✋") {
+        if (ComputerSelection == "✊") {
+            standing.textContent = "WIN!";
+            playerwins++;
+            //console.log("You Win!!! :D ✋ defeats ✊!");
+        }
+        else {
+            standing.textContent = "LOSE!";
+            computerwins++;
+            //console.log("You Lose :\"( ✋ loses to ✌️");
+        }
+    }
+    else if (playerSelection == "✌️") {
+        if (ComputerSelection == "✋") {
+            standing.textContent = "WIN!";
+            playerwins++;
+            //console.log("You Win!!! :D ✌️ defeat ✋!");
+        }
+        else {
+            standing.textContent = "LOSE!";
+            computerwins++;
+            //console.log("You Lose :\"( ✌️ lose to ✊");
+        }
+    }
+
+    myscore.textContent = `${playerwins}`;
+    pcscore.textContent = `${computerwins}`;
+
+    const rebtn = document.createElement('button');
+    rebtn.textContent = "RESTART";
+    //style the rebtn white border
+    rebtn.style.border = "2px solid white";
+    rebtn.style.fontFamily = "Honk";
+    rebtn.style.padding = "10px";
+    rebtn.style.marginTop = "20px";
+    const finalwin = document.createElement('div');
+    if (playerwins == 5) {
+        finalwin.textContent = "YOU HAVE WON THE GAME!";
+        standing.appendChild(finalwin);
+        standing.appendChild(rebtn);
+    }
+    if (computerwins == 5) {
+        finalwin.textContent = "YOU HAVE LOST THE GAME!";
+        standing.appendChild(finalwin);
+        standing.appendChild(rebtn);
+    }
+    rebtn.addEventListener('click', () => {
+        standing.removeChild(finalwin);
+        standing.removeChild(rebtn);
+
+        pcmove.textContent = "?";
+        mymove.textContent = "?";
+        playerwins = 0; myscore.textContent = 0;
+        computerwins = 0; pcscore.textContent = 0;
+    })
 }
 
-let playerwins = 0;
+const buttons = document.querySelectorAll('button');
+const mymove = document.querySelector('.mymove');
+const pcmove = document.querySelector('.pcmove');
+const standing = document.querySelector('.standing');
+const myscore = document.querySelector('.myscore');
+const pcscore = document.querySelector('.pcscore');
+
 let computerwins = 0;
-let numberOfRounds = 0;
-console.log("Welcome to a Best-of-Five Rock, Paper, Scissors game.");
-game();
+let playerwins = 0;
+let numberOfRounds = 1;
 
-if(playerwins > computerwins){
-    console.log("Congratulations! You have Won the game!!! " + "You: " + playerwins + " Computer: " + computerwins);
-}
-else{
-    console.log("Oops You Lost the Game :( " + "You: " + playerwins + " Computer: " + computerwins);
-}
+    buttons.forEach((button) => {
+        button.addEventListener('click', () => {
+            if(playerwins == 5 || computerwins == 5){
+                return;
+            }
+            let pcchoice = getComputerChoice();
+            mymove.textContent = `${button.textContent}`;
+            pcmove.textContent = `${pcchoice}`;
+            playRound(button.textContent, pcchoice);
+        });
+    });
