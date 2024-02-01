@@ -1,0 +1,94 @@
+html, body{
+    font-family: 'Honk', sans-serif;
+    text-align: center;
+    background-color: #121212;
+    margin: 0;
+    min-height: 100vh;
+}
+
+.header {
+    font-size: 64px;
+    background-color: rgb(31, 31, 31);
+    margin-bottom: 50px;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.853); 
+}
+
+.scoretable {
+    font-size: 48px;
+    display: flex;
+    justify-content: center;
+}
+
+.pcmove, .mymove{
+    color: white;
+    height: 60px;
+}
+
+i {
+    font-size: 64px;
+    color: white;
+}
+
+
+.standing {
+    width: 700px;
+}
+.player {
+    padding: 40px;
+    width: 250px;
+    border-radius: 20px;
+    background-color: rgba(255, 255, 255, 0.116);
+}
+
+.buttons {
+    margin-top: 150px;
+    margin-bottom: 150px;
+    display: flex;
+    gap: 150px;
+    justify-content: center;
+}
+
+button {
+    background-color: rgba(255, 255, 255, 0.219);
+    border: none;
+    border-radius: 20px;
+    font-size: 50px;
+    padding: 25px;
+}
+
+.footer {
+    margin-top: auto;
+    background-color: rgb(31, 31, 31);
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.853); 
+    
+    display: flex;
+    align-items: center;
+}
+
+/* set credits to exact center in footer */
+.credit {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 0);
+    
+    font-size: 52px;
+}
+
+.links {
+    margin-left: auto;
+    margin-right: 200px;
+}
+
+a {
+    text-decoration: none;
+    font-size: 20px;
+    display: flex;
+    gap: 8px;
+}
+ul{
+    padding: 0;
+    list-style-type: none;
+}
+li{
+    padding: 5px;
+}
