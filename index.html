@@ -4,11 +4,76 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock Paper Scissors!</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+    <script src="https://kit.fontawesome.com/898f91e5ba.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Honk&family=Noto+Sans:wght@100&display=swap" rel="stylesheet">
+
 </head>
 
 <body>
-    
-    <script src="script.js"></script>
+    <div class="header">
+        Rock Paper Scissors!
+    </div>
+
+    <div class="scoretable">
+        <div class="player" id="user">
+            <i class="fa-regular fa-user" style="color: #ffffff;"></i>
+            <div class="mymove" style="font-family: 'Courier New', Courier, monospace; font-size: 48px;">
+                ?
+            </div>
+            <div>
+                You: <span class="myscore">0</span>
+            </div>
+        </div>
+
+        <div class="standing"></div>
+
+        <div class="player" id="computer">
+            <i class="fa-solid fa-display" style="color: #ffffff;"></i>
+            <div class="pcmove" style="font-family: 'Courier New', Courier, monospace; font-size: 48px;">
+                ?
+            </div>
+            <div>
+                Computer: <span class="pcscore">0</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="buttons">
+        <button>✊</button>
+        <button>✋</button>
+        <button>✌️</button>
+    </div>
+
+    <div class="footer">
+        <div class="credit">Creator: Jwoll</div>
+        <div class="links">
+            <ul>
+                <li>
+                    <a href="https://github.com/Jwoll2004/Rock-Paper-Scissors" target="_blank" rel="noopener noreferrer">
+                        <i class="fa fa-github" style="font-size:24px"></i>
+                        GitHub
+                    </a>
+                </li>
+                <li>
+                    <a href="https://fonts.google.com/specimen/Honk?noto.lang=en_Latn" target="_blank" rel="noopener noreferrer">
+                        <i class="fa-solid fa-font" style="font-size:20px"></i>
+                        Font used: Honk
+                    </a>
+                </li>
+                <li>
+                    <a href="https://fontawesome.com/" target="_blank" rel="noopener noreferrer">
+                        <i class="fa-regular fa-font-awesome" style="font-size:22px"></i>
+                        Icons from: FontAwesome
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
 </body>
 
 </html>
